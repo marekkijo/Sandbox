@@ -1,4 +1,5 @@
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
+load("@bazel_tools//tools/build_defs/repo:git.bzl", "git_repository")
 
 http_archive(
     name = "sdl2",
@@ -29,3 +30,15 @@ http_archive(
 load("@com_github_nelhage_rules_boost//:boost/boost.bzl", "boost_deps")
 
 boost_deps()
+
+git_repository(
+    name = "rules_vulkan",
+    remote = "https://github.com/jadarve/rules_vulkan.git",
+    tag = "v0.0.9",
+)
+
+load("@rules_vulkan//vulkan:repositories.bzl", "vulkan_repositories")
+
+vulkan_repositories(
+    sdk_path = "C:/VulkanSDK/1.3.250.0",
+)

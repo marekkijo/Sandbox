@@ -60,3 +60,20 @@ cc_binary(
         "@sdl2",
     ],
 )
+
+cc_binary(
+    name = "wolf_vulkan_compute",
+    srcs = [
+        "vulkan_compute/main.cpp",
+        "vulkan_compute/wolf_renderer_vulkan_compute.cpp",
+        "vulkan_compute/wolf_renderer_vulkan_compute.hpp",
+    ],
+    data = glob(["data/**"]),
+    deps = [
+        ":wolf_common_lib",
+        "//tools:sdl",
+        "@boost//:program_options",
+        "@rules_vulkan//vulkan:vulkan_cc_library",
+        "@sdl2",
+    ],
+)
