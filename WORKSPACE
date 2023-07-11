@@ -26,6 +26,13 @@ http_archive(
     url = "https://github.com/nelhage/rules_boost/archive/086d0baee11189ddcbcff01714d0b243c142c7ca.tar.gz",
 )
 
-load("@com_github_nelhage_rules_boost//:boost/boost.bzl", "boost_deps")
+load("//tools/workspace:default.bzl", "add_default_repositories")
 
-boost_deps()
+add_default_repositories()
+
+load(
+    "@com_github_mjbots_bazel_deps//tools/workspace:default.bzl",
+    bazel_deps_add = "add_default_repositories",
+)
+
+bazel_deps_add()
